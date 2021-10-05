@@ -11,7 +11,6 @@
     <table class="datatablex">
         <thead>
             <tr>
-                <th></th>
                 <th>ID</th>
                 <th>Capitan</th>
                 <th>Nombre de Equipo</th>
@@ -22,8 +21,6 @@
         <tbody>
             {% for p in lista_equipos %}
             <tr>
-                <td class="tablex-checkbox"><input type="checkbox" name="" id=""></td>
-                <td><span class="availablex"></span></td>
                 <td>{{ p.id }}</td>
                 <td>{{ p.nombre_capitan }}</td>
                 <td>{{ p.nombre_equipo }}</td>
