@@ -94,17 +94,15 @@
 				</ul>
 			</nav>
 		</div>
+		{% if messages %}
+		{% for message in messages %}
+		<div class="notification {{ message.tags}}">
+			{{ message }}
+		</div>
+		{% endfor %}
+		{% endif %}
 	</header>
-	<!-- #header -->
-	
-	
-	{% if messages %}
-	{% for message in messages %}
-	<div class="notification {{ message.tags}}">
-		{{ message }}
-	</div>
-	{% endfor %}
-	{% endif %}
+	<!-- #header -->	
 
 	<!-- Contenido personalizado -->
 	{% block content %}
