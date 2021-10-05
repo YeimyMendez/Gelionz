@@ -5,6 +5,10 @@ from webservices.views import *
 
 router = routers.DefaultRouter()
 router.register(r'usuario', usuario_viewset)
+router.register(r'equipo', equipo_viewset)
+router.register(r'usuarioequipo', userequipo_viewset)
+router.register(r'evento', evento_viewset)
+router.register(r'pago', pago_viewset)
 
 urlpatterns = [
 	path('api/', include(router.urls)),
