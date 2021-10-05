@@ -1,0 +1,46 @@
+{% extends 'base_streaming.html' %}
+
+{% block titulo %}
+Detalle
+{% endblock titulo %}
+
+{% block contenido %}
+
+<h1>Detalle de evento {{ id_evento }} </h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Id evento</th>
+            <th scope="col">Equipo</th>
+            <th scope="col">Nº jugadores</th>
+            <th scope="col">Fecha y Hora</th>
+            <th scope="col">Pago</th>
+            <th scope="col">Valor</th>
+            <th scope="col">Opciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for p in lista %}
+        <tr>
+            <td>{{ p.inscripcion_evento_FK }}</td>
+            <td>{{ p.id_equipo_FK.nombre_equipo }}</td>
+            <td>{{ p.id_equipo_FK.num_integrantes }}</td>
+            <td>{{ p.inscripcion_evento_FK.fecha_hora_evento }}</td>
+            <td>{{ p.inscripcion_evento_FK.is_paid }}</td>
+            <td>{{ p.inscripcion_evento_FK.valor_evento }}</td>
+            <td>
+                {% if p.es_ganador == 'ganador' %}
+                <p>Ganador</p>
+                {% elif p.es_ganador == 'inscrito' and obj.ganador_evento is not None %}
+                <p>Perdedor</p>
+                {% elif p.es_ganador == 'inscrito' and obj.ganador_evento is None %}
+                <a href="{% url 'agregarG_view' id_evento=obj.id id_equipo=p.id_equipo_FK.id %}"
+                    class="btn btn-primary">Asignar ganador</a>
+                {% endif %}
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock contenido %}

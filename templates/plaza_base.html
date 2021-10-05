@@ -1,0 +1,170 @@
+
+<!DOCTYPE html>
+{% load crispy_forms_tags %}
+<html lang="es">
+
+<head>
+	{% load static %}
+	
+	<meta charset="utf-8">
+	<title>GELIONZ | HOME</title>
+	<meta content="width=device-width, initial-scale=1.0" name="viewport">
+	<meta content="" name="keywords">
+	<meta content="" name="description">
+
+	<!-- Favicon -->
+	<link rel="shortcut icon" href="{% static 'principal/img/gelionz.png' %} ">
+
+	<!-- Google Fonts -->
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Raleway:300,400,500,700,800" rel="stylesheet">
+
+	<!-- Fuente Personalizada -->
+	<link rel="stylesheet" type="text/css" href="{% static 'principal/lib/font-awesome/fonts/fuente.css' %}">
+
+	<!-- GelionzLibre CSS File -->
+	<link href="{% static 'principal/css/gelionzlibre.css' %}" rel="stylesheet">
+
+	<!-- Libraries CSS Files -->
+	<link href="{% static 'principal/lib/font-awesome/css/font-awesome.min.css' %}" rel="stylesheet">
+	<link href="{% static 'principal/lib/animate-css/animate.min.css' %}" rel="stylesheet">
+
+	<!-- Main Stylesheet File -->
+	<link href="{% static 'principal/css/style.css' %}" rel="stylesheet">
+
+</head>
+
+<body>
+	<div id="preloader"></div>
+
+	<!--==========================
+	Home Section
+	============================-->
+	<section id="home">
+		<div class="home-container">
+			<div class="wow fadeIn">
+				<div class="home-logo">
+					<img class="" src="{% static 'principal/img/soldierGelionz.png' %}" alt="Gelionz">
+				</div>
+				<h1>Bienvenidos</h1>
+				 <!--==========================
+					TEXTO ANIMADO
+					============================-->
+				<div class="outer">
+					<h2>Una Nueva &nbsp;
+					<div class="inner">
+						<span>
+							Experiencia<br>Aventura<br>Oportunidad
+						</span>
+					</div>
+					</h2>
+				</div>
+				<div class="actions">
+				<div class="hame">
+          {% if request.user.is_authenticated %}
+					<a href="{% url 'logout' %}" class="btn-get-iniciar">Salir</a>
+          {% else %}
+					<a href="{% url 'register' %}" class="btn-registrar">Registrate</a>
+					<a href="{% url 'login' %}" class="btn-get-iniciar">Iniciar Sesion</a>
+          {% endif %}	 
+				</div>
+			</div>
+		</div>
+	</section>
+	<!--==========================
+	Sección de encabezado
+	============================-->
+	<header id="header">
+		<div class="container">
+			<div id="logo" class="pull-left">
+				<a href="#hero"><img src="{% static 'principal/img/logo/soldierGelionz.png' %}" alt="" title="" /></a>
+			</div>
+	<!-- #nav-menu-container -->
+			<nav id="nav-menu-container">
+				<ul class="nav-menu">
+					<li class="menu-active">
+						<a href="{% url 'perfil' %}">Perfil</a>
+					</li>
+					<li>
+						<a href="{% url 'lista_equipos' %}">Mis Equipos</a>
+					</li>          
+					<li>
+						<a href="">Nivel Competitivo</a>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</header>
+	<!-- #header -->
+	
+	
+	{% if messages %}
+	{% for message in messages %}
+	<div class="notification {{ message.tags}}">
+		{{ message }}
+	</div>
+	{% endfor %}
+	{% endif %}
+
+	<!-- Contenido personalizado -->
+	{% block content %}
+
+	{% endblock %}
+
+	<!--==========================
+	Subscrbe Section
+	============================-->
+	<section id="subscribe">
+		<div class="container wow fadeInUp">
+			<div class="row">
+				<div class="col-md-8">
+					<h3 class="subscribe-title">Inscribete a las partidas Rapidas</h3>
+					<p class="subscribe-text">Ahora puedes participar en los eventos del Nivel Competitivo que se llevan a cavo las 24/7 y Ganar dinero real!</p>
+				</div>
+				<div class="col-md-4 subscribe-btn-container">
+					<a class="subscribe-btn" href="">Inscribete Ahora!!!</a>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!--==========================
+	Footer
+============================-->
+	<footer id="footer">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<div class="copyright">
+						&copy; Copyright <strong>GelionzGamer</strong>. Reservados todos los derechos
+					</div>
+					<div class="credits">
+				
+						Visita Nuestro Canal YouTube <a href="https://www.youtube.com/channel/UCRjILI6RrEWPCRpDMY3Sctw">GELIONZ BATTLE ROYALE</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</footer>
+	<!-- #footer -->
+
+	<a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
+
+	<!-- Required JavaScript Libraries -->
+	<script src="{% static 'principal/lib/jquery/jquery.min.js' %}"></script>
+	<script src="{% static 'principal/lib/bootstrap/js/bootstrap.min.js' %}"></script>
+	<script src="{% static 'principal/lib/superfish/hoverIntent.js' %}"></script>
+	<script src="{% static 'principal/lib/superfish/superfish.min.js' %}"></script>
+	<script src="{% static 'principal/lib/morphext/morphext.min.js' %}"></script>
+	<script src="{% static 'principal/lib/wow/wow.min.js' %}"></script>
+	<script src="{% static 'principal/lib/stickyjs/sticky.js' %}"></script>
+	<script src="{% static 'principal/lib/easing/easing.js' %}"></script>
+
+	<!-- Template Specisifc Custom Javascript File -->
+	<script src="{% static 'principal/js/custom.js' %}"></script>
+
+	<script src="{% static 'principal/js/contactform.js' %}"></script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+	<!--==========================
+	Contactanos Section
+	============================-->
+	<section id="contact">
+		<div class="container wow fadeInUp">
+			<div class="row">
+				<div class="col-md-12">
+					<h3 class="section-title">Contactanos</h3>
+					<div class="section-title-divider"></div>
+					<p class="section-description">Tu opinion es Importante para nosostros, nos ayudas a Mejorar!!</p>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-md-3 col-md-push-2">
+					<div class="info">
+						<div>
+							<i class="fa fa-map-marker"></i>
+							<p>Popayan - Cauca<br>SENA CTPI</p>
+						</div>
+
+						<div>
+							<i class="fa fa-envelope"></i>
+							<p>gelionzgamer@gmail.com</p>
+						</div>
+
+						<div>
+							<i class="fa fa-phone"></i>
+							<p>+57 324 604 3193</p>
+						</div>
+
+					</div>
+				</div>
+				<div class="col-md-5 col-md-push-2">
+					<div class="form">
+						{% if "valido" in request.GET %}
+						<p>ENVIO EXITOSO!!, SU OPINION ES MUY IMPORTANTE PARA NOSOTROS!!</p>
+						{% endif %}
+						<form action="" method="POST" role="form" class="contactForm">
+							{% csrf_token %}
+							<div class="form-group">
+								{{miFormulario.nombre|as_crispy_field}}
+								<!-- <input type="text" name="name" class="form-control" id="name" placeholder="Ingresa tu nombre" data-rule="minlen:4" data-msg="Por favor ingrese al menos 4 caracteres" />
+								<div class="validation"></div> -->
+							</div>
+							<div class="form-group">
+								{{miFormulario.email|as_crispy_field}}
+								<!-- <input type="email" class="form-control" name="email" id="email" placeholder="Ingresa tu correo" data-rule="email" data-msg="Ingresa un Correo Valido" />
+								<div class="validation"></div> -->
+							</div>
+							<!-- <div class="form-group">
+								<input type="text" class="form-control" name="subject" id="subject" placeholder="Asunto" data-rule="minlen:4" data-msg="Por favor ingrese al menos 8 caracteres del tema" />
+								<div class="validation"></div>
+							</div> -->
+							<div class="form-group">
+								{{miFormulario.contenido|as_crispy_field}}
+								<!-- <textarea class="form-control" name="message" rows="5" data-rule="required" data-msg="Por favor escribe algo para nosotros" placeholder="Message"></textarea>
+								<div class="validation"></div> -->
+							</div>
+							<div class="text-center"><button type="submit" value="Enviar">Enviar mensaje</button></div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+{% endblock %}

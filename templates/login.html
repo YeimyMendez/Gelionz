@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+<div class="container-login">
+	<div class="wrap-login">
+		<form class="login-form validate-form" id="formLogin" action="" method="post">
+			{% csrf_token %}
+			<!-- {{ form.as_p }} -->
+			<span class="login-form-title">LOGIN</span>
+
+			<div class="wrap-input100" data-validate = "Usuario incorrecto">
+				{{form.username|as_crispy_field}}
+				<!-- <input class="input100" type="text" id="usuario" name="usuario" placeholder="Usuario"> -->
+				<span class="focus-efecto"></span>
+			</div>
+			<div class="wrap-input100" data-validate="Password incorrecto">
+				{{form.password|as_crispy_field}}
+				<!-- <input class="input100" type="password" id="password" name="password" placeholder="Password"> -->
+				<span class="focus-efecto"></span>
+			</div>
+			<div class="myButtonn">
+				<div class="center">
+					<button class="btn">
+						<svg width="290px" height="50px" viewBox="0 0 290 50" class="border">
+							<polyline points="289,1 289,49 1,49 1,1 289,1" class="bg-line"/>
+							<polyline points="289,1 289,49 1,49 1,1 289,1" class="hl-line"/>
+						</svg>
+						<span>
+							iniciar sesion
+						</span>
+					</button>
+				</div>
+			</div>
+			<br>
+			<br>
+			<br>			
+		</form>
+	</div>
+</div> 
+
+{% endblock %}

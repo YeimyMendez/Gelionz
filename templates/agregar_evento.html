@@ -1,0 +1,16 @@
+{% extends 'base_streaming.html' %}
+
+{% block titulo %}
+Agregar evento
+{% endblock titulo %}
+
+{% block contenido %}
+
+<h1>Agregar evento</h1>
+<form class="formagregar" action="" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ formulario.as_p }}
+    <input class="btnguardar" type="submit" value="Guardar">
+</form>
+
+{% endblock contenido %}''

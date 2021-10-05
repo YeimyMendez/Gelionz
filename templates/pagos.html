@@ -1,0 +1,36 @@
+{% extends 'base_streaming.html' %}
+
+{% block titulo %}
+Pagos
+{% endblock titulo %}
+
+{% block contenido %}
+ <h1>Lista de pagos</h1>
+
+    {% if profile.user.rol_de_usuario == streamer and request.user.is_authenticated %}
+        <a class="btnagregar" href="{% url 'agregar_evento_view' %}">Agregar evento</a>
+    {% endif %}
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Id</th>
+                <th scope="col">Usuario a pagar</th>
+                <th scope="col">Fecha y hora</th>
+                <th scope="col">Valor</th>
+                <th scope="col">Evento pagado</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for p in lista %}
+                <tr>
+                    <td>{{ p.id }}</td>
+                    <td>{{ p.tipo_pago }}</td>
+                    <td>{{ p.fecha_hora_pago }}</td>
+                    <td>{{ p.valor_pago }}</td>
+                    <td>{{ p.inscripcion_evento_FK }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock contenido %}

@@ -1,0 +1,63 @@
+/* base */
+body{
+    width: 100%;
+    font-family: Arial, Helvetica, sans-serif;
+}
+h1{
+    text-align: center;
+    margin-top: 20px;
+}
+.tevento{
+    width: 100%;
+    margin-top: 20px;
+    justify-content: center;
+}
+.btnagregar{
+    text-decoration: none;
+    padding: 10px;
+    border-radius: 15px;
+    font-size: 15px;
+    background-color: rgb(30, 139, 255);
+    color: white;
+    float:right;
+    margin-right: 20px;
+}
+.btnagregar:hover{
+    text-decoration: none;
+    background-color: rgb(51, 60, 60);
+    color: white;
+}
+.table{
+    justify-content: center;
+    margin-right: 20px;
+}
+.formagregar{
+    text-align: justify;
+    background-color: rgb(216, 216, 216);
+    border-radius: 5px;
+    font-size: 15px;
+    padding: 20px;
+    height: 300px;
+    width: 500px;
+    margin: 0 auto;
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+}
+.btnguardar{
+    text-decoration: none;
+    padding: 10px;
+    border-radius: 15px;
+    font-size: 15px;
+    background-color: rgb(30, 139, 255);
+    color: white;
+    float:right;
+    margin-right: 20px;
+
+}
+.btnguardar:hover{
+    text-decoration: none;
+    background-color: rgb(51, 60, 60);
+    color: white;
+}
+

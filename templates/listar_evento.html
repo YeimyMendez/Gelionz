@@ -1,0 +1,48 @@
+{% extends 'base_streaming.html' %}
+
+{% block titulo %}
+{{ vista }}
+{% endblock titulo %}
+
+{% block contenido %}
+<h1>Lista de {{ vista }}s</h1>
+
+{% if profile.user.rol_de_usuario == streamer and request.user.is_authenticated %}
+<a class="btnagregar" href="{% url 'agregar_evento_view' %}">Agregar evento</a>
+{% endif %}
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Id</th>
+      <th scope="col">Evento</th>
+      <th scope="col">Fecha y hora</th>
+      <th scope="col">Nº de jugadores</th>
+      <th scope="col">Ganador</th>
+      <th scope="col">Estado</th>
+      <th scope="col">Organizador</th>
+      <th scope="col">Acciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for p in lista %}
+      <tr>
+        <td>{{ p.id }}</td>
+        <td>{{ p.tipo_evento }}</td>
+        <td>{{ p.fecha_hora_evento }}</td>
+        <td>{{ p.cantidad_jugadores }}</td>
+        <td>{{ p.ganador_evento }}</td>
+        <td>{{ p.estado }}</td> 
+        <td>{{ p.organizador }}</td>
+        <td>
+          {% if profile.user.rol_de_usuario == streamer and request.user.is_authenticated %}
+            <a href="{% url 'detalle_view' id_evento=p.id %}" class="btn btn-secondary">Detalles</a>
+            <a href="{% url 'editarE_view' id_evento=p.id %}" class="btn btn-warning">Editar</a>
+            <a href="{% url 'eliminarEvento_view' id_evento=p.id %}" class="btn btn-danger">Eliminar</a>
+          {% endif %}
+        </td>
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock contenido %}
