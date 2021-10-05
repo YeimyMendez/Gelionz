@@ -11,8 +11,8 @@
 		<form class="login-form validate-form" id="formLogin" action="" method="post">
 			{% csrf_token %}
 			<!-- {{ form.as_p }} -->
-			<span class="login-form-title">LOGIN</span>
-
+			<span class="login-form-title">REGISTRATE</span>
+			<br>
 			<div class="wrap-input100" data-validate = "Usuario incorrecto">
 				{{form.username|as_crispy_field}}
 				<!-- <input class="input100" type="text" id="usuario" name="usuario" placeholder="Usuario"> -->
@@ -56,7 +56,7 @@
 							<polyline points="289,1 289,49 1,49 1,1 289,1" class="hl-line"/>
 						</svg>
 						<span>
-							iniciar sesion
+							REGISTRAR
 						</span>
 					</button>
 				</div>
