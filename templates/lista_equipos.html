@@ -1,38 +1,40 @@
 {% extends "plaza_base.html" %}
-
 {% load static %}
-
 {% block content %}
-
 {% if profile.user.rol_de_usuario == jugador and request.user.is_authenticated %}
 <a class="btnagregar" href="{% url 'crear_equipo' %}">Crear equipo</a>
 {% endif %}
+<div class="datatable-container">
 
+    <table class="datatable">
+        <thead>
+            <tr>
+                <th></th>
+                <th>ID</th>
+                <th>Capitan</th>
+                <th>Nombre de Equipo</th>                    
+            </tr>
+        </thead>
 
+        <tbody>
+            {% for p in lista_equipos %}
+            <tr>
+                <td class="table-checkbox"><input type="checkbox" name="" id=""></td>
+                <td><span class="available"></span></td>
+                <td>{{ p.id }}</td>
+                <td>{{ p.nombre_capitan }}</td>
+                <td>{{ p.nombre_equipo }}</td>
+                <td>
+                    {% if profile.user.rol_de_usuario == jugador and request.user.is_authenticated %}
+                    <a href="{% url 'detalle_equipo_view' id_equipo=p.id %}" class="btn btn-secondary">Detalle</a>
+                    <a href="#" class="btn btn-warning" style="color: aliceblue;">Editar</a>
+                    <a href="#" class="btn btn-danger">Eliminar</a>
+                    {% endif %}
+                </td>
+            </tr>               
+        </tbody>
+    </table>
 
-<table class="table">
-    <thead>
-        <tr class="xd">
-            <th scope="col">Id</th>
-            <th scope="col">Capitan</th>
-            <th scope="col">Nombre equipo</th>
-    </thead>
-    <tbody>
-        {% for p in lista_equipos %}
-        <tr>
-            <td style="color: aliceblue;">{{ p.id }}</td>
-            <td style="color: aliceblue;">{{ p.nombre_capitan }}</td>
-            <td style="color: aliceblue;">{{ p.nombre_equipo }}</td>
-            <td>
-                {% if profile.user.rol_de_usuario == jugador and request.user.is_authenticated %}
-                <a href="{% url 'detalle_equipo_view' id_equipo=p.id %}" class="btn btn-secondary">Detalle</a>
-                <a href="#" class="btn btn-warning" style="color: aliceblue;">Editar</a>
-                <a href="#" class="btn btn-danger">Eliminar</a>
-                {% endif %}
-            </td>
-        </tr>
-        {% endfor %}
-    </tbody>
-</table>
+</div>
 
 {% endblock %}
