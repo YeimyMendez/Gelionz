@@ -3,7 +3,6 @@
 {% load static %}
 
 {% block content %}
-<link href="{% static 'principal/cssa/table.css' %}" rel="stylesheet">
 <section id="subscribe">
     {% if profile.user.rol_de_usuario == jugador and request.user.is_authenticated %}
     <div class="col-md-4 subscribe-btn-container">
