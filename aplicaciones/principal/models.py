@@ -172,7 +172,7 @@ tipos_pago = (
 class Pago(models.Model):
 	tipo_pago               =models.CharField(max_length=200, choices=tipos_pago)
 	fecha_hora_pago         =models.DateTimeField()
-	foto                    =models.DateTimeField()
+	foto                    =models.ImageField()
 	valor_pago              =models.IntegerField()
 	estado_pago             =models.IntegerField()
 	# pago_equipo
