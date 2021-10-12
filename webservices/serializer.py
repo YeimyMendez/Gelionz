@@ -22,7 +22,7 @@ class userequipo_serializer(serializers.HyperlinkedModelSerializer):
 class evento_serializer(serializers.HyperlinkedModelSerializer):
 	class Meta:
 		model  = Evento
-		fields = ('tipo_evento','fecha_hora_evento','valor_evento','ganador_evento','cantidad_jugadores','is_paid ','estado','organizador')
+		fields = ('tipo_evento','fecha_hora_evento','valor_evento','ganador_evento','cantidad_jugadores','estado','organizador')
 
 class inscripcion_serializer(serializers.HyperlinkedModelSerializer):
 	class Meta:

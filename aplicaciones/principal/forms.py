@@ -18,36 +18,36 @@ class UserRegisterForm(UserCreationForm):
 # Formulario Inscrpciones
 class form_inscripcion(forms.ModelForm):
 	class Meta:
-		model = Inscripcion
-		fields = '__all__'
+		model   = Inscripcion
+		fields  = '__all__'
 		exclude = ['es_ganador', 'is_paid']
 
 class form_crear_equipo(forms.ModelForm):
 	class Meta:
-		model = Equipo
-		fields = '__all__'
+		model   = Equipo
+		fields  = '__all__'
 		exclude = ['eventos_jugados', 'num_integrantes']
 
 # Formulario publicaciones
 class PostForm(forms.ModelForm):
-	content = forms.CharField(label='', widget=forms.Textarea(attrs={'rows':2, 'placeholder': '¿Qué está pasando?'}), required=True)
+	content    = forms.CharField(label='', widget=forms.Textarea(attrs={'rows':2, 'placeholder': '¿Qué está pasando?'}), required=True)
 	class Meta:
-		model = Post
+		model  = Post
 		fields = ['content']
 
 class form_agregar_evento(forms.ModelForm):
 	class Meta:
-		model = Evento
-		fields = '__all__'
+		model   = Evento
+		fields  = '__all__'
 		exclude = ['ganador_evento', 'is_paid', 'organizador', 'estado']
 		widgets = {'fecha_hora_evento':forms.DateTimeInput(attrs={'type': 'date'})}		
 		
 class FormularioContacto(forms.Form):
-		nombre=forms.CharField(label="Nombre", required=True)
-		email=forms.CharField(label="Email", required=True)
-		contenido=forms.CharField(label="Contenido", widget=forms.Textarea)
+		nombre    = forms.CharField(label="Nombre", required=True)
+		email     = forms.CharField(label="Email", required=True)
+		contenido = forms.CharField(label="Contenido", widget=forms.Textarea)
 
-		fields = ['nombre', 'email', 'contenido']
+		fields  = ['nombre', 'email', 'contenido']
 		widgets = {
 			'nombre'    : forms.TextInput(attrs={'Placeholder':'Nombre'}),
 			'email'     : forms.TextInput(attrs={'Placeholder':'Email'}),
