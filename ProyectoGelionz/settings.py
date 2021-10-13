@@ -146,13 +146,13 @@ USE_TZ = True
 # ]
 
 #ESTATIC PRUEBA
-STATIC_URL = '/static/'
-STATICFILES_DIRS = (os.path.join(BASE_DIR, 'aplicaciones/principal/static'),)
+# STATIC_URL = '/static/'
+# STATICFILES_DIRS = (os.path.join(BASE_DIR, 'aplicaciones/principal/static'),)
 # STATIC_ROOT = '/aplicaciones/principal/static'
 
 
 # HEROKU
-# STATIC_ROOT = "static"
+STATIC_ROOT = "static"
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = 'media'
