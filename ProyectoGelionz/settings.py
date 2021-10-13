@@ -152,6 +152,7 @@ USE_TZ = True
 
 
 # HEROKU
+STATIC_URL = '/static/'
 STATIC_ROOT = "static"
 
 MEDIA_URL = '/media/'
