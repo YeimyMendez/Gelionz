@@ -3,108 +3,79 @@
 {% load static %}
 
 {% block content %}
-
-<h1 style="color: aliceblue;">SQUAD {{ id_equipo }} </h1>
-
-<table class="tablee">
-  <thead>
-    <tr>
-      <th scope="col" style="color: aliceblue;">Id</th>
-      <th scope="col" style="color: aliceblue;">Jugador</th>
-    </tr>
-    
-  </thead>
-  <tbody>
-    {% for asociado in asociados %}
-      <tr>
-        <td style="color: aliceblue">{{ asociado.id }}</td>
-        <td style="color: aliceblue;">{{ asociado.user }}</td>
-      </tr>
-    {% endfor %}
-  </tbody>
-</table>
-<br>
-<br>
-
-<!-- BUSCADOR -->
-<form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search" 
-method="POST" >
-  {% csrf_token %}
-  <div class="box">
-    <div class="container-4">
-      <input type="search" id="search" placeholder="Buscar..." name="buscar" value="{{ request.POST.buscar }}" />
-      <button class="icon"><i class="fa fa-search"></i></button>
+<!-- Tabla de los jugadores asociados al Equipo -->
+<section id="subscribe">
+  <div class="datatable-container">
+    <div class="header-tools">
+      <h1 >SQUAD {{ id_equipo }} </h1>          
     </div>
+    <table class="datatable">
+      <thead>
+        <tr>
+          <th >Id</th>
+          <th >Jugador</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for asociado in asociados %}
+        <tr>
+          <td >{{ asociado.id }}</td>
+          <td >{{ asociado.user }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>    
   </div>
-</form>
-<br>
-<br>
+</section> 
 
-<!-- 
-  
-  <input type="text" class="form-control bg-light border-0 small" placeholder="Buscar..." name="buscar" value="{{ request.POST.buscar }}">
+<section id="subscribe">
+  <div class="datatable-container"> 
+    <!-- Buscador de jugadores -->
+    <div class="header-tools">      
+      <div class="tools">        
+        <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search" method="POST" >
+          {% csrf_token %}
+          <div class="box">
+          <h3 >BUSCAR JUGADORES</h3> 
+            <div class="container-4">
+              <input type="search" id="search" placeholder="Buscar..." name="buscar" value="{{ request.POST.buscar }}"/>
+              <button class="icon"><i class="fa fa-search"></i></button>
+            </div>
+          </div>
+        </form>  
+      </div>      
+    </div> 
+    {% if jugadores %}
+    <table class="datatable">
+      <thead>
+        <tr>
+          <th>Nombre de usuario</th>
+          <th>Apellidos</th>
+          <th>E-mail</th>
+          <th>Acción</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for p in jugadores %}
+        {% if usuario.id != user.id %}
+        <tr>
+          <td>{{ p.username }}</td>
+          <td>{{ p.apellidos }}</td>
+          <td>{{ p.email }}</td>
+          <td><a href="{% url 'asociar_equipo_view' id_equipo=obj.id id_jugador=p.id %}">Asociar </a></td>
+        </tr>
+        {% else %}
+        {% endif %}
+        {% endfor %}
+      </tbody>
+    </table>
+    {% else %}
+    <h1>NO HAY JUGADORES REGISTRADOS</h1>
+    {% endif %}
 
-  Begin Page Content -->
-<div class="container-fluid">
-
-  <!-- Page Heading -->
-  <h1 class="h3 mb-2 text-gray-800" style="color: aliceblue;">JUGADORES</h1>
-
-  <!-- DataTales Example -->
-  <div class="card shadow mb-4">
-    <div class="card-header py-3">
-      <h6 class="m-0 font-weight-bold text-primary">Tabla de Datos</h6>
-    </div>
-    <div class="card-body">
-      <br>
-      {% if jugadores %}
-      <!-- Aqui pregunta si el diccionario se envio. Recuerde que en las views le dijimos como se llama el objeto -->
-      <div>
-        <table class="tablee">
-          <thead>
-            <tr>
-              <th>Nombre de usuario</th>
-              <th>Apellidos</th>
-              <th>E-mail</th>
-              <th>Acción</th>
-            </tr>
-          </thead>
-          <tbody>
-            {% for p in jugadores %}
-            {% if usuario.id != user.id %}
-            <tr>
-              <td>{{ p.username }}</td>
-              <td>{{ p.apellidos }}</td>
-              <td>{{ p.email }}</td>
-              <td><a href="{% url 'asociar_equipo_view' id_equipo=obj.id id_jugador=p.id %}">Asociar </a></td>
-            </tr>
-            {% else %}
-            {% endif %}
-            {% endfor %}
-          </tbody>
-        </table>
-      </div>
-      {% else %}
-      <h1>NO HAY JUGADORES REGISTRADOS</h1>
-      {% endif %}
-    </div>
+<!-- fin -->
   </div>
-</div>
+</section>
 
-<!-- Ventana modal -->
-<div class="modal fade" id="creacion" role="dialog">
-
-</div>
-
-<div class="modal fade" id="eliminacion" role="dialog">
-
-</div>
-
-<div class="modal fade" id="edicion" role="dialog">
-
-  {% block extrajs %}
-  <script src="{% static 'aplicaciones/js/modals/modals.js' %}"></script>
-  {% endblock extrajs %}
-</div>
 
 {% endblock content %}
