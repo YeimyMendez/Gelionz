@@ -7,7 +7,7 @@ from aplicaciones.principal.models import *
 class usuario_serializer(serializers.HyperlinkedModelSerializer):
 	class Meta:
 		model  = Usuario
-		fields = ('id','username','email','nombres','apellidos','documento','celular','genero','imagen','usuario_activo','rol_de_usuario','password')
+		fields = ('id','username','email','nombres','apellidos','documento','celular','genero','usuario_activo','rol_de_usuario','password')
 
 class equipo_serializer(serializers.HyperlinkedModelSerializer):
 	class Meta:

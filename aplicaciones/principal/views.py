@@ -33,6 +33,11 @@ def contacto(request):
 def home(request):
 	return render(request, "home.html")
 
+def blog(request):
+
+    blogs=Evento.objects.all()
+    return render(request, 'blog.html', locals())
+
 #vista register
 def register(request):
 	if request.method == 'POST':

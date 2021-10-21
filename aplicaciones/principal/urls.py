@@ -7,6 +7,7 @@ from django.contrib.auth.views import LoginView, LogoutView
 urlpatterns = [
 #URLS DE USUARIO  ANONIMO
 	path('contacto', views.contacto, name="Contacto"),
+    path('blog', views.blog, name="Blog"),
 	path('login/', LoginView.as_view(template_name='login.html'), name='login'), #url de la vista login.
 	path('register/', views.register, name='register'),#url de la vista Register
 #URLS DE USUARIO JUGADOR

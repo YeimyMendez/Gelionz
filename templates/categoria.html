@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block content %}
+
+    {% for blog in blogs %}
+
+
+    <section class="page-section clearfix">
+        <div class="container">
+          <div class="intro">
+            <img class="intro-img img-fluid mb-3 mb-lg-0 rounded" src="{{post.imagen.url}}" alt="" style="width: 50%;">
+            <div class="intro-text left-0 text-center bg-faded p-5 rounded">
+              <h2 class="section-heading mb-4" >
+                <span class="section-heading-lower">{{blog.titulo}}</span>
+                <span class="section-heading-upper">{{blog.contenido}}</span>
+              </h2>
+              
+              <div style="text-align: left; font-size: 0.8em;">
+              
+                Autor: {{blog.autor}}
+              
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+
+
+    {% endfor %}
+
+    <section>
+        <div style="width: 75%; margin: auto; text-align: center; color: white;">
+        
+          Categorías: 
+
+          {% for blog in blogs %}
+
+            {% for categoria in blog.categorias.all %}
+
+              {{categoria.nombre}} &nbsp;&nbsp;&nbsp;
+
+            {% endfor %}
+        
+          {% endfor %}
+        
+        </div>
+
+
+
+    </section>
+
+{% endblock %}
