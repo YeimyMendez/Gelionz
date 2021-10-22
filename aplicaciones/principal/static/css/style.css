@@ -179,8 +179,8 @@ h2{
 
 @media (max-width: 500px) {
   .outer h2 {
-    font-size: 28px;
-    line-height: 36px;
+    font-size: 20px;
+    line-height: 28px;
   }
 
   .inner h2 {
