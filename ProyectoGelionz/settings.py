@@ -25,10 +25,10 @@ SECRET_KEY = 'django-insecure-rytl$(xq+^60-edn@pn)$9bn$m1c9$!r(=7!#x3%p0$fdtjaeg
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-# ALLOWED_HOSTS = []
+ALLOWED_HOSTS = []
 
 #HEROKU
-ALLOWED_HOSTS = ['gelionz.herokuapp.com']
+# ALLOWED_HOSTS = ['gelionz.herokuapp.com']
 
 # Application definition
 
@@ -83,24 +83,24 @@ WSGI_APPLICATION = 'ProyectoGelionz.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
-
-#HEROKU
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'd1jd2t2n673347',
-        'USER': 'beeglmpxzoagnf',
-        'PASSWORD': 'b0eba3c4a7dccbc78376e00da2d884bb15ae44d492eff3333f764dbe63447256',
-        'HOST': 'ec2-35-171-171-27.compute-1.amazonaws.com',
-        'PORT': '5432',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+
+#HEROKU
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'd1jd2t2n673347',
+#         'USER': 'beeglmpxzoagnf',
+#         'PASSWORD': 'b0eba3c4a7dccbc78376e00da2d884bb15ae44d492eff3333f764dbe63447256',
+#         'HOST': 'ec2-35-171-171-27.compute-1.amazonaws.com',
+#         'PORT': '5432',
+#     }
+# }
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
@@ -147,14 +147,14 @@ USE_TZ = True
 # ]
 
 #ESTATIC PRUEBA
-# STATIC_URL = '/static/'
-# STATICFILES_DIRS = (os.path.join(BASE_DIR, 'aplicaciones/principal/static'),)
-# STATIC_ROOT = '/aplicaciones/principal/static'
+STATIC_URL = '/static/'
+STATICFILES_DIRS = (os.path.join(BASE_DIR, 'aplicaciones/principal/static'),)
+STATIC_ROOT = '/aplicaciones/principal/static'
 
 
 # HEROKU
-STATIC_URL = '/static/'
-STATIC_ROOT = "static"
+# STATIC_URL = '/static/'
+# STATIC_ROOT = "static"
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = 'media'
