@@ -577,7 +577,7 @@ background: #f8f7f7;
   color: #080808;
 }
 
-@media (max-width: 500px) {
+@media (max-width: 508px) {
   .intro iframe {
     width: 100%;
     height: 100%;   
