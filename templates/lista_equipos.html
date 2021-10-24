@@ -60,8 +60,8 @@
                     <td class="table-checkbox"><input type="checkbox" name="" id=""></td>
                     <td><span class="available"></span></td>
                     <td>{{ p.id }}</td>
-                    <td>{{ p.nombre_capitan }}</td>
-                    <td>{{ p.nombre_equipo }}</td>
+                    <td>{{ p.equipo_FK.nombre_capitan }}</td>
+                    <td>{{ p.equipo_FK.nombre_equipo }}</td>
                     <td>2020/05/01</td>
                     <td>
                         {% if profile.user.rol_de_usuario == jugador and request.user.is_authenticated %}

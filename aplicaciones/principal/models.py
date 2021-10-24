@@ -131,6 +131,7 @@ estados = (
 
 class Evento(models.Model):
 	tipo_evento         =models.CharField(max_length=200, choices=tipos_eventos)
+	codigo 		        =models.CharField(max_length=200, null=True, blank=True)
 	fecha_hora_evento   =models.DateTimeField()
 	valor_evento        =models.PositiveIntegerField() 
 	ganador_evento      =models.CharField(max_length=200, null=True, blank=True)
@@ -153,9 +154,8 @@ estados_equipo =(
 )
 class Inscripcion(models.Model):
 	fecha_hora_inscripcion  =models.DateTimeField(auto_now_add=True)
-
 	es_ganador              =models.CharField(max_length=50, choices=estados_equipo, default='inscrito') 
-	is_paid                 =models.BooleanField(default=True) #el quipo pago la inscripcion
+	pago                    =models.ImageField('imagen del pago', upload_to='pagos/', blank=True, null=True)
 	id_equipo_FK            =models.ForeignKey(Equipo, on_delete=models.CASCADE)
 	inscripcion_evento_FK   =models.ForeignKey(Evento, on_delete=models.CASCADE)
 	

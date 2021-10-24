@@ -1,29 +1,61 @@
 {% extends "plaza_base.html" %}
 
-{% block content %}
-<div class="containerLogin">
-	<div class="row justify-content-center pt-5 mt-5 m-1">
-		<div class="col-md-6 col-sm-8 col-xl-4 col-lg-5 formulario">
-    		<form  action="" method="post" >
-				{% csrf_token %}
-				{{ form.as_p }}
-				<table style="color: aliceblue; margin: 20px auto">
-            	{{miFormulario.as_table}}
-        		</table>
-				<div class="myButtonn">
-					<div class="center">
-					  <button class="btn">
-						<svg width="180px" height="60px" viewBox="0 0 180 60" class="border">
-						  <polyline points="179,1 179,59 1,59 1,1 179,1" class="bg-line" />
-						  <polyline points="179,1 179,59 1,59 1,1 179,1" class="hl-line" />
-						</svg>
-						<span>inscribirme</span>
-					  </button>
-					</div>
-				  </div>
-			</form>
-		</div>
-	</div>
-</div>
+{% load static %}
 
-{% endblock %}
+{% block content %}
+<!-- Tabla de los jugadores asociados al Equipo -->
+<section id="subscribe">
+  <div class="datatable-container">
+    <div class="header-tools">
+      <h1 >EVENTOS INSCRIPTOS {{ id_evento }} </h1>          
+    </div>
+    <table class="datatable">
+      <thead>
+        <tr>
+          <th >Id</th>
+          <th >Tipo Evento</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for asociado in asociados %}
+        <tr>
+          <td >{{ asociado.id }}</td>
+          <td >{{ asociado.tipo_evento }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>    
+  </div>
+</section> 
+
+<section id="subscribe">
+  <div class="datatable-container">
+	  <!-- Listar Eventos -->
+	{% for evento in levento %}
+<section class="page-section clearfix">
+  <div class="container">
+    <div class="intro">
+      <img class="intro-img img-fluid mb-3 mb-lg-0 rounded" src="{% static 'principal/img/principal.jpg' %}" alt="" style="width: 50%;">
+      <div class="intro-text left-0 text-center bg-faded p-5 rounded">
+        <h2 class="section-heading mb-4" >
+          <span class="section-heading-lower">{{evento.tipo_evento}}</span>
+          <span class="section-heading-upper">{{evento.fecha_hora_evento}}</span>
+        </h2>
+        <div style="text-align: left; font-size: 0.8em;">
+          Organizador: {{evento.organizador}}
+        </div>
+        <div>
+          <a href="{% url 'seleccionar_equipo' id_evento=evento.id %}"class="btn btn-primary">Seleccionar mi equipo</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endfor %}
+
+<!-- fin -->
+  </div>
+</section>
+
+
+{% endblock content %}

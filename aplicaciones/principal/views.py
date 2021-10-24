@@ -31,6 +31,7 @@ def contacto(request):
 	
 #Vista home
 def home(request):
+	print(request.user.username)
 	return render(request, "home.html")
 
 def blog(request):
@@ -100,6 +101,7 @@ def listar_evento_view(request, vista):
 	return render(request, 'listar_evento.html', locals())
 
 #VISTA DE AGREGAR EVENTO (TORNEOS O PARTIDAS)
+@login_required
 def agregar_evento_view(request):
 	perfil = Usuario.objects.get(username=request.user.username)
 	if request.method == 'POST':
@@ -175,13 +177,14 @@ def pagos_view(request):
 def lista_equipos(request):
 	try:
 		persona = Usuario.objects.get(username=request.user.username)
-		lista_equipos = Equipo.objects.filter(nombre_capitan=persona.username)
+		#lista_equipos = Equipo.objects.filter(nombre_capitan=persona.username)
+		lista_equipos = User_Equipo.objects.filter(user=persona)
 	except:
 		pass
 	return render(request, 'lista_equipos.html', locals())
 
 
-#VISTA DE AGREGAR EVENTO (TORNEOS O PARTIDAS)
+#VISTA DE CREAR EQUIPOS
 def crear_equipo(request):
 	persona = Usuario.objects.get(username=request.user.username)
 	if request.method == 'POST':
@@ -190,6 +193,10 @@ def crear_equipo(request):
 			f = formulario.save(commit=False)
 			f.nombre_capitan = persona.username
 			f.save()
+			mi_equipo = User_Equipo()
+			mi_equipo.equipo_FK= f
+			mi_equipo.user = persona
+			mi_equipo.save()
 			messages.success(request, f'El equipo fue creado Exitosamente')
 			return redirect ('/principal/lista_equipos/')
 	else: #GET
@@ -215,8 +222,8 @@ def detalle_equipo(request, id_equipo):
 	return render(request, 'detalle_equipo.html', locals())
 
 def asociar_equipo (request, id_equipo, id_jugador):
-	equipo = Equipo.objects.get(id=id_equipo)
-	jugador = Usuario.objects.get(id = id_jugador)
+	equipo = Equipo.objects.get(id=id_equipo) # remplazar por evento
+	jugador = Usuario.objects.get(id = id_jugador) # remplazar por eequipo
 	try:
 		# buscar si el usuairo ya esta asociado al equipo
 		team =  User_Equipo.objects.filter(equipo_FK = equipo, user = jugador)
@@ -252,3 +259,38 @@ def listar_jugador(request):
 		).distinct()
 	ctx = {'jugadores':jugadores}
 	return render(request, 'detalle_equipo.html', ctx )
+
+#Vista Nivel Competitivo
+def NivelCompetitivo(request):
+	levento=Evento.objects.all()
+	return render(request, 'nivel_competitivo.html', locals())
+#vista Inscribirme
+def inscribirEquipo (request,  id_evento, id_equipo):
+	evento_objeto = Evento.objects.get(id=id_evento)
+	equipo_objeto = User_Equipo.objects.get(id = id_equipo)
+	
+	try:
+		# buscar si el usuairo ya esta asociado al equipo
+		team =  Inscripcion.objects.filter(inscripcion_evento_FK = evento_objeto, id_equipo_FK = equipo_objeto.equipo_FK)
+		if team:
+			messages.success(request, f'YA ESTA INSCRITO')
+			print ("YA ESTA INSCRITO")
+		else:
+			asociados = Inscripcion()
+			## no dejar asociar a alguien asociado al equipo
+			# para no agregar al equipo 2 veces 	
+			asociados.inscripcion_evento_FK = evento_objeto
+			asociados.id_equipo_FK = equipo_objeto.equipo_FK
+			asociados.save()
+	except:
+		pass
+	#return redirect('/principal/inscribirEvento/{}/'.format(evento_objeto.id))
+	return redirect('/')
+
+def seleccionar_equipo(request, id_evento):
+	levento=Evento.objects.filter()
+	mis_equipos = User_Equipo.objects.filter(user = request.user)
+
+	return render(request, 'seleccionar_equipo.html', locals())
+
+

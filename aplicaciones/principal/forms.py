@@ -20,7 +20,7 @@ class form_inscripcion(forms.ModelForm):
 	class Meta:
 		model   = Inscripcion
 		fields  = '__all__'
-		exclude = ['es_ganador', 'is_paid']
+		exclude = ['es_ganador']
 
 class form_crear_equipo(forms.ModelForm):
 	class Meta:
@@ -59,4 +59,3 @@ class FormularioContacto(forms.Form):
 			'email':'Email',
 			'contenido':'Contenido',
 		} """
-

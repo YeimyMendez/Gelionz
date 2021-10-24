@@ -25,6 +25,7 @@ SECRET_KEY = 'django-insecure-rytl$(xq+^60-edn@pn)$9bn$m1c9$!r(=7!#x3%p0$fdtjaeg
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+#LOCAL
 # ALLOWED_HOSTS = []
 
 #HEROKU
@@ -46,8 +47,9 @@ INSTALLED_APPS = [
     'webservices',
     'gunicorn',
     'psycopg2',
-
 ]
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -83,6 +85,7 @@ WSGI_APPLICATION = 'ProyectoGelionz.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
+#LOCAL
 # DATABASES = {
 #     'default': {
 #         'ENGINE': 'django.db.backends.sqlite3',
@@ -146,7 +149,7 @@ USE_TZ = True
 #     BASE_DIR / "static"
 # ]
 
-#ESTATIC PRUEBA
+#ESTATIC PRUEBA LOCAL
 # STATIC_URL = '/static/'
 # STATICFILES_DIRS = (os.path.join(BASE_DIR, 'aplicaciones/principal/static'),)
 # STATIC_ROOT = '/aplicaciones/principal/static'
