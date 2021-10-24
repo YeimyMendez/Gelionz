@@ -86,12 +86,12 @@ WSGI_APPLICATION = 'ProyectoGelionz.wsgi.application'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
 #LOCAL
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
+}
 
 #HEROKU
 DATABASES = {
@@ -151,8 +151,8 @@ USE_TZ = True
 
 #ESTATIC PRUEBA LOCAL
 # STATIC_URL = '/static/'
-# STATICFILES_DIRS = (os.path.join(BASE_DIR, 'aplicaciones/principal/static'),)
-# STATIC_ROOT = '/aplicaciones/principal/static'
+# STATICFILES_DIRS = (os.path.join(BASE_DIR, 'aplicaciones/static'),)
+# STATIC_ROOT = '/aplicaciones/static'
 
 
 # HEROKU
