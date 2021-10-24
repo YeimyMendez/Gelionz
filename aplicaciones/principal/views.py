@@ -83,8 +83,6 @@ def perfil(request, username=None):
 	else:
 		return redirect('home')
 
-
-
 #VISTAS DE USUARIO STREAMER
 def inicio_view(request):
 	persona = Usuario.objects.get(username=request.user.username)
@@ -285,7 +283,7 @@ def inscribirEquipo (request,  id_evento, id_equipo):
 	except:
 		pass
 	#return redirect('/principal/inscribirEvento/{}/'.format(evento_objeto.id))
-	return redirect('/')
+	return redirect('perfil')
 
 def seleccionar_equipo(request, id_evento):
 	levento=Evento.objects.filter()

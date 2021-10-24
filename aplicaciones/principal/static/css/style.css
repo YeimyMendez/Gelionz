@@ -945,15 +945,15 @@ background: #f8f7f7;
   text-align: center;
   padding: 10px 20px;
   border-radius: 4px;
-  color: #fff;
+  color: rgb(7, 6, 6);
   font-size: 0.9rem;
 }
 .success {
-  background: #fc0000;
-  color: white;
+  background: #8ffc00;
+  color: rgb(50, 2, 54);
 }
 .error {
-  background: #AB3444;
+  background: #f00c0c;
   color: white;
   margin-bottom: 20px;
 }  

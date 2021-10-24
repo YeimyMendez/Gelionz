@@ -29,10 +29,10 @@
 </section> 
 
 <section id="subscribe">
-  <div class="datatable-container">
+  
 	  <!-- Listar Eventos -->
 	{% for evento in levento %}
-<section class="page-section clearfix">
+
   <div class="container">
     <div class="intro">
       <img class="intro-img img-fluid mb-3 mb-lg-0 rounded" src="{% static 'principal/img/principal.jpg' %}" alt="" style="width: 50%;">
@@ -43,18 +43,18 @@
         </h2>
         <div style="text-align: left; font-size: 0.8em;">
           Organizador: {{evento.organizador}}
-        </div>
-        <div>
-          <a href="{% url 'seleccionar_equipo' id_evento=evento.id %}"class="btn btn-primary">Seleccionar mi equipo</a>
-        </div>
+        </div>        
+        <div class="col-md-4 subscribe-btn-container">
+          <a class="subscribe-btn" href="{% url 'seleccionar_equipo' id_evento=evento.id %}">Seleccionar mi equipo</a>
+      </div>
       </div>
     </div>
   </div>
-</section>
+
 {% endfor %}
 
 <!-- fin -->
-  </div>
+  
 </section>
 
 

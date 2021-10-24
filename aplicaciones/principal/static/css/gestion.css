@@ -432,27 +432,6 @@ ul.errorlist{
     padding-bottom: 0.5rem !important;
   }  
 
-
-
-/*Notifications*/
-.notification {
-  text-align: center;
-  padding: 10px 20px;
-  border-radius: 4px;
-  color: #fff;
-  font-size: 0.9rem;
-}
-.success {
-  background: #fc0000;
-  color: white;
-}
-.error {
-  background: #AB3444;
-  color: white;
-  margin-bottom: 20px;
-}  
-
-
 /* PROFILE */
 .profile{
 	display: flex;

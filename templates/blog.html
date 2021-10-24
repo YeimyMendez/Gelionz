@@ -3,12 +3,10 @@
 {% load static %}
 
 {% block content %}
-
-<!-- BIENVENIDA -->
 <!--==========================
-  Video Introductorio Section
+  ventos disponiblesE
   ============================-->
-  {% for evento in levento %}
+{% for evento in blogs %}
 <section class="page-section clearfix">
   <div class="container">
     <div class="intro">
@@ -26,14 +24,4 @@
   </div>
 </section>
 {% endfor %}
-<!-- <section>
-  <div style="width: 75%; margin: auto; text-align: center; color: white;">
-    Categorías:
-    {% for post in posts %}
-      {% for categoria in blog.categorias.all %}
-      <a href="{% url 'categoria' categoria.id %}" class="linksCategorias">{{categoria.nombre}} </a>&nbsp;&nbsp;&nbsp;
-      {% endfor %}
-    {% endfor %}
-  </div>
-</section> -->
 {% endblock %}
