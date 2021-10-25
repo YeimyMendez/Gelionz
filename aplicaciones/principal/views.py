@@ -195,7 +195,7 @@ def crear_equipo(request):
 			mi_equipo.equipo_FK= f
 			mi_equipo.user = persona
 			mi_equipo.save()
-			messages.success(request, f'El equipo fue creado Exitosamente')
+			messages.success(request, f'El equipo {f} fue creado Exitosamente')
 			return redirect ('/principal/lista_equipos/')
 	else: #GET
 		formulario = form_crear_equipo()
@@ -226,8 +226,8 @@ def asociar_equipo (request, id_equipo, id_jugador):
 		# buscar si el usuairo ya esta asociado al equipo
 		team =  User_Equipo.objects.filter(equipo_FK = equipo, user = jugador)
 		if team:
-			messages.success(request, f'YA ESTA INSCRITO')
-			print ("YA ESTA INSCRITO")
+			messages.error(request, f'YA ESTA INSCRITO {jugador} EN EL EQUIPO')
+			
 		else:
 			asociados = User_Equipo()
 			## no dejar asociar a alguien asociado al equipo
@@ -235,6 +235,7 @@ def asociar_equipo (request, id_equipo, id_jugador):
 			asociados.equipo_FK = equipo
 			asociados.user = jugador
 			asociados.save()
+			messages.success(request, f'SE ASOCIO AL {equipo}')
 	except:
 		pass
 	return redirect('/principal/detalle_equipo/{}/'.format(equipo.id))
@@ -271,8 +272,7 @@ def inscribirEquipo (request,  id_evento, id_equipo):
 		# buscar si el usuairo ya esta asociado al equipo
 		team =  Inscripcion.objects.filter(inscripcion_evento_FK = evento_objeto, id_equipo_FK = equipo_objeto.equipo_FK)
 		if team:
-			messages.success(request, f'YA ESTA INSCRITO')
-			print ("YA ESTA INSCRITO")
+			messages.error(request, f'EL EQUIPO {equipo_objeto.equipo_FK} YA SE ENCUENTRA INSCRITO AL EVENTO')			
 		else:
 			asociados = Inscripcion()
 			## no dejar asociar a alguien asociado al equipo
@@ -280,10 +280,11 @@ def inscribirEquipo (request,  id_evento, id_equipo):
 			asociados.inscripcion_evento_FK = evento_objeto
 			asociados.id_equipo_FK = equipo_objeto.equipo_FK
 			asociados.save()
+			messages.success(request, f'EL EQUIPO {equipo_objeto} SE INSCRIBIO EXITOSAMENTE')	
 	except:
 		pass
 	#return redirect('/principal/inscribirEvento/{}/'.format(evento_objeto.id))
-	return redirect('perfil')
+	return redirect('lista_equipos')
 
 def seleccionar_equipo(request, id_evento):
 	levento=Evento.objects.filter()
