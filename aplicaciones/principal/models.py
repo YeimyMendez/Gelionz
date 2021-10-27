@@ -52,7 +52,7 @@ class Usuario(AbstractBaseUser):
 	documento               = models.CharField('Numero de documento', max_length=15,blank=True, null= True)
 	celular                 = models.CharField('Numero de telefono', max_length=10,blank=True, null= True)
 	genero                  = models.CharField('Genero', max_length=200, choices=elegir_genero)
-	imagen                  = models.ImageField('imagen de perfil', upload_to='perfil/', max_length=200, blank=True, null=True)
+	imagen                  = models.ImageField(default='perfil/gelionz1.jpg/', upload_to='perfil/',blank=True, null= True)
 	usuario_activo          = models.BooleanField(default=True)
 	usuario_administrador   = models.BooleanField(default=False)
 	rol_de_usuario          = models.CharField(max_length=200, choices=rol_usuario,default='jugador')

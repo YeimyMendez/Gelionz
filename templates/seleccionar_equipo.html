@@ -2,7 +2,6 @@
 {% block content %}
   {% for equipo in mis_equipos %}
     <h2>
-
         {{ equipo.equipo_FK.nombre_equipo }}
         <a href="{% url 'inscribirEquipo' id_evento=id_evento id_equipo=equipo.id %}"> Inscribir equipo</a>
     </h2>

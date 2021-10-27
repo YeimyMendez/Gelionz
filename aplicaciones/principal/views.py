@@ -2,14 +2,12 @@ from django.shortcuts import render, redirect, get_object_or_404
 from . models import *
 from . forms import *
 from django.contrib import messages
-from django.core.mail import EmailMessage
+from django.core.mail import EmailMessage, message
 from django.contrib.auth.models import *
 from django.contrib.auth.decorators import login_required
 from django.db.models import Q
 
 # Create your views here.
-
-
 
 #VISTAS DE USUARIO ANONIMO
 #VISTA DE CONTACTO
@@ -82,6 +80,49 @@ def perfil(request, username=None):
 		return render(request, 'inicio_streaming.html', locals()) 
 	else:
 		return redirect('home')
+
+@login_required
+def imgPerfil(request):
+	if request.method == 'POST':
+		print("xxxxxxxxxx")
+		print()
+		print("xxxxxxxxxx")
+		form = ImgPerfilForm(request.POST, request.FILES)
+		
+		if form.is_valid():
+			form.save()
+			messages.success(request, f'Image uploaded succesfully!')
+			# message = "Image uploaded succesfully!"
+		else:
+			form = ImgPerfilForm()
+
+	return render(request,'perfil.html', locals())
+
+
+
+
+
+
+
+	# usuario = request.user.id
+	# cambiar_img  = Usuario.objects.get(user__id=usuario)
+	# # edit_imagen  = Usuario.objects.get(id=usuario)
+
+	# if request.method == 'POST':
+	# 	form = ImgPerfilForm(request.POST, request.FILES, instance = cambiar_img)
+	# 	if form.is_valid():
+	# 		cambiar_img=form.cleaned_data.get('imagen')
+	# 		cambiar_img.save()#,perfil=User.username
+
+	# 		return redirect('perfil.html',username=request.usuario.username)
+	# else:
+	# 	form = ImgPerfilForm(instance=cambiar_img)
+		
+	# context={
+	# 	'form':form,
+	# }
+
+	# return render(request,'perfil.html', context)
 
 #VISTAS DE USUARIO STREAMER
 def inicio_view(request):

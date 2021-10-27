@@ -2,8 +2,15 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
-from django.forms import widgets
+from django.forms import fields, widgets
 from . models import Equipo, Inscripcion, Post, Usuario, Evento
+
+# SUBIR IMAGEN DE PERFIL
+class ImgPerfilForm(forms.ModelForm):
+	# imagen = forms.ImageField(required=False, widget=forms.FileInput)
+	class Meta:
+		model = Usuario
+		fields = ['imagen']		
 
 # Formulario registro
 class UserRegisterForm(UserCreationForm):

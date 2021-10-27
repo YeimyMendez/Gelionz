@@ -12,6 +12,7 @@ urlpatterns = [
 	path('register/', views.register, name='register'),#url de la vista Register
 #URLS DE USUARIO JUGADOR
 	path('perfil', views.perfil, name='perfil'), #url de la vista Perfil. 
+    path('imgPerfil/', views.imgPerfil, name='imgPerfil'),
 	path('logout/', LogoutView.as_view(template_name='logout.html'), name='logout'),
 	path('lista_equipos/', views.lista_equipos, name = 'lista_equipos'),
 	path('crear_equipo/', views.crear_equipo, name = 'crear_equipo'),
