@@ -48,8 +48,7 @@
                     <th>Status</th>
                     <th>ID</th>
                     <th>Lider</th>
-                    <th>Nonmbre Equipo</th>
-                    <th>Date</th>
+                    <th>Nonmbre Equipo</th>                    
                     <th>Accion</th>                    
                 </tr>
             </thead>
@@ -61,11 +60,10 @@
                     <td><span class="available"></span></td>
                     <td>{{ p.id }}</td>
                     <td>{{ p.equipo_FK.nombre_capitan }}</td>
-                    <td>{{ p.equipo_FK.nombre_equipo }}</td>
-                    <td>2020/05/01</td>
+                    <td>{{ p.equipo_FK.nombre_equipo }}</td>                    
                     <td>
                         {% if profile.user.rol_de_usuario == jugador and request.user.is_authenticated %}
-                        <a href="{% url 'detalle_equipo_view' id_equipo=p.id %}" class="">Detalle</a>
+                        <a href="{% url 'detalle_equipo_view' id_equipo=p.id %}" class="boton1">Detalle</a>
                         {% endif %}
                     </td>                    
                 </tr>

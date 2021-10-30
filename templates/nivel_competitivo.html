@@ -14,13 +14,15 @@
         <tr>
           <th >Id</th>
           <th >Tipo Evento</th>
+          <th >Codigo de la sala</th>
         </tr>
       </thead>
       <tbody>
-        {% for asociado in asociados %}
+        {% for asociadox in levento %}
         <tr>
-          <td >{{ asociado.id }}</td>
-          <td >{{ asociado.tipo_evento }}</td>
+          <td >{{ asociadox.id }}</td>
+          <td >{{ asociadox.tipo_evento }}</td>
+          <td >{{ asociadox.codigo }}</td>
         </tr>
         {% endfor %}
       </tbody>

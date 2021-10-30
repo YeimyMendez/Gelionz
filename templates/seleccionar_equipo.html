@@ -1,9 +1,57 @@
 {% extends 'plaza_base.html' %}
 {% block content %}
-  {% for equipo in mis_equipos %}
-    <h2>
-        {{ equipo.equipo_FK.nombre_equipo }}
-        <a href="{% url 'inscribirEquipo' id_evento=id_evento id_equipo=equipo.id %}"> Inscribir equipo</a>
-    </h2>
-  {% endfor %}
+<section id="subscribe">
+  <div class="datatable-container">
+    <div class="header-tools">
+      <div class="tools">
+        <h3>SELECCIONA UN EQUIPO</h3>
+      </div>
+      <div class="search">
+        <input type="text" name="" id="" class="search-input">
+      </div>
+    </div>
+    <table class="datatable">
+      <thead>
+        <tr>
+          <th>Status</th>
+          <th>ID</th>
+          <th>Lider</th>
+          <th>Nonmbre Equipo</th>
+          <th>Accion</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for equipo in mis_equipos %}
+        <tr>
+          <td><span class="available"></span></td>
+          <td>{{ equipo.id }}</td>
+          <td>{{ equipo.equipo_FK.nombre_capitan }}</td>
+          <td>{{ equipo.equipo_FK.nombre_equipo }}</td>
+          <td>
+            {% if profile.user.rol_de_usuario == jugador and request.user.is_authenticated %}            
+            <a href="{% url 'inscribirEquipo' id_evento=id_evento id_equipo=equipo.id %}" class="boton1">INSCRIBIR EQUIPO</a>
+            {% endif %}
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    <div class="footer-tools">
+      <div class="list-items">
+        Show
+        <select name="n-entries" id="n-enties" class="n-entries">
+          <option value="15">5</option>
+          <option value="10" selected>10</option>
+          <option value="15">15</option>
+        </select>
+        entries
+      </div>
+      <div class="pages">
+        <ul>
+          <li><span class="active">1</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
 {% endblock content %}

@@ -62,7 +62,7 @@
           <td>{{ p.username }}</td>
           <td>{{ p.apellidos }}</td>
           <td>{{ p.email }}</td>
-          <td><a href="{% url 'asociar_equipo_view' id_equipo=obj.id id_jugador=p.id %}">Asociar </a></td>
+          <td><a href="{% url 'asociar_equipo_view' id_equipo=obj.id id_jugador=p.id %}" class="boton1">Asociar </a></td>
         </tr>
         {% else %}
         {% endif %}

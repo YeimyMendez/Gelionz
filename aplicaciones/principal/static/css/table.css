@@ -194,3 +194,61 @@
 .datatable-container .datatable tbody tr .offline::before{
     background-color: var(--dt-status-offline-color);
 }
+
+.boton1{
+    display:inline-block;
+    width:80%;
+    padding:5px;
+    border: 3px solid #facf0d;
+    border-radius:50px;
+    text-decoration: none;
+    color:rgb(245, 243, 243);
+    font-weight: bold;
+    transition: all 0.9s;
+    text-align: center;
+    font-size: 10px;
+}
+.boton1:hover{
+    background:rgb(253, 252, 252);
+    color:rgb(12, 12, 12);
+}
+
+.boton2{
+    display:inline-block;
+    width:100px;
+    padding:5px;
+    border: 3px solid #facf0d;
+    border-radius:50px;
+    text-decoration: none;
+    color:rgb(7, 7, 7);
+    font-weight: bold;
+    transition: all 0.9s;
+    text-align: center;
+    font-size: 12px;
+}
+.boton2:hover{
+    background:rgb(253, 252, 252);
+    color:rgb(65, 245, 10);
+}
+
+@media (max-width: 508px) {
+
+    .datatable-container{
+        width: 80%;
+        margin: 0 auto;
+        font-size: 12px;
+    }
+
+    .boton1{
+        display:90%;
+        width:100%;       
+        font-size: 50%;
+    }
+
+    .boton2{
+        display:90%;
+        width:100%;       
+        font-size: 50%;
+    }
+ 
+  }

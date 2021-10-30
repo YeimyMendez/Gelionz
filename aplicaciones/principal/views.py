@@ -6,6 +6,7 @@ from django.core.mail import EmailMessage, message
 from django.contrib.auth.models import *
 from django.contrib.auth.decorators import login_required
 from django.db.models import Q
+import os
 
 # Create your views here.
 
@@ -82,47 +83,44 @@ def perfil(request, username=None):
 		return redirect('home')
 
 @login_required
-def imgPerfil(request):
+def imgPerfil(request):	
+	
+	cambiar_img  = Usuario.objects.get(username=request.user.username)	
 	if request.method == 'POST':
-		print("xxxxxxxxxx")
-		print()
-		print("xxxxxxxxxx")
-		form = ImgPerfilForm(request.POST, request.FILES)
-		
+		form = ImgPerfilForm(request.POST, request.FILES, instance = cambiar_img)
 		if form.is_valid():
-			form.save()
-			messages.success(request, f'Image uploaded succesfully!')
-			# message = "Image uploaded succesfully!"
-		else:
-			form = ImgPerfilForm()
+			cambiar_img.imagen=form.cleaned_data.get('username')
+			cambiar_img.imagen=form.cleaned_data.get('imagen')
+			cambiar_img.save()
+			return redirect('/principal/perfil',username=request.user.username)
+	else:
+		form = ImgPerfilForm(instance=cambiar_img)
+		
+	context={
+		'form':form,
+	}
 
-	return render(request,'perfil.html', locals())
+	return render(request,'editar_imagen.html', context)
 
 
 
 
-
-
-
-	# usuario = request.user.id
-	# cambiar_img  = Usuario.objects.get(user__id=usuario)
-	# # edit_imagen  = Usuario.objects.get(id=usuario)
 
 	# if request.method == 'POST':
-	# 	form = ImgPerfilForm(request.POST, request.FILES, instance = cambiar_img)
-	# 	if form.is_valid():
-	# 		cambiar_img=form.cleaned_data.get('imagen')
-	# 		cambiar_img.save()#,perfil=User.username
-
-	# 		return redirect('perfil.html',username=request.usuario.username)
-	# else:
-	# 	form = ImgPerfilForm(instance=cambiar_img)
+	# 	print("xxxxxxxxxx")
+	# 	print()
+	# 	print("xxxxxxxxxx")
+	# 	form = ImgPerfilForm(request.POST, request.FILES)
 		
-	# context={
-	# 	'form':form,
-	# }
+	# 	if form.is_valid():
+	# 		form.save()
+	# 		messages.success(request, f'Image uploaded succesfully!')
+	# 		# message = "Image uploaded succesfully!"
+	# 	else:
+	# 		form = ImgPerfilForm()
 
-	# return render(request,'perfil.html', context)
+	# return render(request,'perfil.html', locals())
+
 
 #VISTAS DE USUARIO STREAMER
 def inicio_view(request):

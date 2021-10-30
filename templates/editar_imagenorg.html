@@ -1,0 +1,36 @@
+{% extends "plaza_base.html" %}
+
+{% load static %}
+
+{% block content %}
+
+<div class="container-login">
+	<div class="wrap-login">
+		<form class="login-form validate-form" id="formLogin" action="" method="post" enctype="multipart/form-data">
+			{% csrf_token %}			
+			<span class="login-form-title">Cambiar imagen</span>
+			<br>            
+            <div class="perfil-usuario-header">
+                <div class="perfil-usuario-portada">
+                    <div class="perfil-usuario-avatar">
+                        <img src="/media/{{ user.imagen }}" alt="img-avatar">				
+                    </div>                    
+                </div>
+                {{form.imagen}}                
+            </div>
+			
+			<div class="control-group">
+                <div class="controls">
+                <a href="{% url 'perfil' %}" class="mt-4 inline-flex items-center px-2.5 py-1.5 border border-transparent text-xs font-medium rounded dark:text-dark-txt text-indigo-700 dark:bg-dark-second bg-indigo-100 dark:hover:bg-dark-third hover:bg-indigo-200 focus:outline-none focus:ring-2 focus:ring-offset-2 dark:focus:ring-dark-third focus:ring-indigo-500">
+                Retornar al Perfil</a>
+                <button type="submit" class="mt-4 inline-flex float-right items-center px-2.5 py-1.5 border border-transparent text-xs font-medium rounded dark:text-dark-txt text-indigo-700 dark:bg-dark-third bg-indigo-100 dark:hover:bg-dark-third hover:bg-indigo-200 focus:outline-none focus:ring-2 focus:ring-offset-2 dark:focus:ring-dark-third focus:ring-indigo-500">
+                Update</button>
+                </div>
+            </div>
+			<br>
+			<br>
+			<br>		
+		</form>
+	</div>
+</div> 
+{% endblock %}

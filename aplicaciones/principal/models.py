@@ -2,8 +2,18 @@ from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
 from django.db.models.fields import CharField
 from django.utils import timezone
+from django.conf import settings
+import os
 
 # Personalizacion de user.
+def user_directory_path_profile(instance, filename):
+    profile_picture_name = 'users/{0}/'.format(instance.user.username)
+    full_path = os.path.join(settings.MEDIA_ROOT, profile_picture_name)
+
+    if os.path.exists(full_path):
+        os.remove(full_path)
+
+    return profile_picture_name
 
 #Tabla de  Modificar  el Usuario Base
 class UsuarioManager(BaseUserManager):
@@ -133,7 +143,7 @@ class Evento(models.Model):
 	tipo_evento         =models.CharField(max_length=200, choices=tipos_eventos)
 	codigo 		        =models.CharField(max_length=200, null=True, blank=True)
 	fecha_hora_evento   =models.DateTimeField()
-	valor_evento        =models.PositiveIntegerField() 
+	valor_evento        =models.PositiveIntegerField()	
 	ganador_evento      =models.CharField(max_length=200, null=True, blank=True)
 	cantidad_jugadores  =models.PositiveIntegerField() #cant_equipos
 	is_paid             =models.BooleanField(default=False) #si el evento fue pago al ganador

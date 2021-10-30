@@ -10,7 +10,7 @@ class ImgPerfilForm(forms.ModelForm):
 	# imagen = forms.ImageField(required=False, widget=forms.FileInput)
 	class Meta:
 		model = Usuario
-		fields = ['imagen']		
+		fields = ['imagen','username']		
 
 # Formulario registro
 class UserRegisterForm(UserCreationForm):

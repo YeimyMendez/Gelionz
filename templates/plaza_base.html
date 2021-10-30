@@ -37,7 +37,12 @@
 		<!-- Main Stylesheet File -->
 		<link rel="stylesheet" href="{% static 'css/style.css' %}">
 		<link rel="stylesheet" href="{% static 'css/styles.css' %}">
-
+		{% block estilos %}
+		  
+		{% endblock estilos %}
+		{% block javascript %}
+		  
+		{% endblock javascript %}
 	</head>
 	<body>
 		<div id="preloader"></div>
@@ -120,7 +125,7 @@
 						<p class="subscribe-text">Ahora puedes participar en los eventos del Nivel Competitivo que se llevan a cavo las 24/7 y Ganar dinero real!</p>
 					</div>
 					<div class="col-md-4 subscribe-btn-container">
-						<a class="subscribe-btn" href="">Inscribete Ahora!!!</a>
+						<a class="subscribe-btn" href="{% url 'NivelCompetitivo' %}">Inscribete Ahora!!!</a>
 					</div>
 				</div>
 			</div>
@@ -159,5 +164,14 @@
 		<script src="{% static 'js/custom.js' %}"></script>
 
 		<script src="{% static 'js/contactform.js' %}"></script>
+		<!-- <script>
+			(function(){
+				setInterval(
+					function(){
+						document.location.reload()
+					},
+				1000)
+			})()
+		</script> -->
 	</body>
 	</html>

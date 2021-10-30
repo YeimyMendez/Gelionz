@@ -721,7 +721,7 @@ svg {
   border-bottom-right-radius: 5px;
 
   border: none;
-  background: #f80000;
+  background: #facf0d;
   height: 50px;
   width: 50px;
   color: #f0e7e7;
@@ -742,7 +742,7 @@ svg {
   }
 
   .container-4:hover button.icon:hover{
-    background: white;
+    background: rgb(49, 47, 47);
   }
 
   .xd {
